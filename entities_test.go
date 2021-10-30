@@ -31,7 +31,7 @@ func TestNewResultado(t *testing.T) {
 	}
 
 	for _, testData := range cases {
-		data, err := obtenerResultado(testData.Input)
+		data, err := model.ObtenerResultado(testData.Input)
 		assert.Equal(t, data.Type, testData.Type)
 		assert.Equal(t, data.Value, testData.Value)
 		assert.Equal(t, data.Length, testData.Length)

@@ -1,6 +1,7 @@
 package model
 
 import (
+	"errors"
 	"fmt"
 	"unicode"
 )
@@ -19,19 +20,19 @@ type Cadena struct {
 }
 
 // Retorno la cadena entrante
-func CadenaEntrante(value string) Cadena {
+func cadenaEntrante(value string) Cadena {
 	return Cadena{value}
 }
 
 // Retorno el resultado tipo, longitud y valor
-func NewResult(t string, l int, v string) Result {
+func newResult(t string, l int, v string) Result {
 	return Result{t, l, v}
 }
 
 // Chequeo que la cadena sea un valor valido
 // chequeo que si es numerico sea un valor entero
 // Chequeo que si es texto sea una letra (mayuscula o minuscula)
-func ChequeoDeCadena(tipo string, valor string, largo int) bool {
+func chequeoDeCadena(tipo string, valor string, largo int) bool {
 	if tipo == "NN" && esValorEntero(valor) {
 		return true
 	}
@@ -62,12 +63,12 @@ func esLetra(s string) bool {
 }
 
 // Retorna el tipo de la cadena
-func Tipo(cadena string) string {
+func tipo(cadena string) string {
 	return cadena[:2]
 }
 
 // Retorna la longitud de la cadena
-func Longitud(cadena string) int {
+func longitud(cadena string) int {
 	var aux int
 	if _, err := fmt.Sscanf(cadena[2:4], "%2d", &aux); err == nil {
 
@@ -76,11 +77,29 @@ func Longitud(cadena string) int {
 }
 
 // Retorna la cantidad de caracteres de la cadena
-func CantidadCaracteres(cadena string) int {
+func cantidadCaracteres(cadena string) int {
 	return len(cadena[4:])
 }
 
 // Retorna el valor de la cadena
-func Valor(cadena string) string {
+func valor(cadena string) string {
 	return cadena[4:]
+}
+
+func ObtenerResultado(cadena string) (Result, error) {
+	if len(cadena) > 4 {
+		cadena := cadenaEntrante(cadena)
+		largo := longitud(cadena.Value)
+		tipo := tipo(cadena.Value)
+		valor := valor(cadena.Value)
+
+		if largo == len(valor) {
+			if chequeoDeCadena(tipo, valor, largo) == true {
+				return newResult(tipo, largo, valor), nil
+			}
+		} else {
+			return Result{}, errors.New("La cadena no es valida")
+		}
+	}
+	return Result{}, errors.New("La cadena no es valida")
 }
