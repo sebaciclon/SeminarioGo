@@ -18,10 +18,12 @@ type Cadena struct {
 	Value string
 }
 
+// Retorno la cadena entrante
 func CadenaEntrante(value string) Cadena {
 	return Cadena{value}
 }
 
+// Retorno el resultado tipo, longitud y valor
 func NewResult(t string, l int, v string) Result {
 	return Result{t, l, v}
 }
@@ -29,7 +31,7 @@ func NewResult(t string, l int, v string) Result {
 // Chequeo que la cadena sea un valor valido
 // chequeo que si es numerico sea un valor entero
 // Chequeo que si es texto sea una letra (mayuscula o minuscula)
-func ChequeoDeCadena(tipo, valor string, largo int) bool {
+func ChequeoDeCadena(tipo string, valor string, largo int) bool {
 	if tipo == "NN" && esValorEntero(valor) {
 		return true
 	}
