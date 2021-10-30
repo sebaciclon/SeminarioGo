@@ -1,0 +1,16 @@
+mode: set
+EntregableGo/main.go:9.57,10.18 1 1
+EntregableGo/main.go:20.2,20.54 1 1
+EntregableGo/main.go:10.18,15.48 5 1
+EntregableGo/main.go:15.48,18.4 1 1
+EntregableGo/main.go:24.13,28.16 3 1
+EntregableGo/main.go:28.16,30.3 1 1
+EntregableGo/main.go:30.8,32.3 1 0
+
+EntregableGo/main.go:9.57,10.18 1 1
+EntregableGo/main.go:20.2,20.54 1 1
+EntregableGo/main.go:10.18,15.48 5 1
+EntregableGo/main.go:15.48,18.4 1 1
+EntregableGo/main.go:24.13,28.16 3 1
+EntregableGo/main.go:28.16,30.3 1 0
+EntregableGo/main.go:30.8,32.3 1 1
